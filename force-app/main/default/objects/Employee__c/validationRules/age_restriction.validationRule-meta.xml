@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>age_restriction</fullName>
+    <active>true</active>
+    <description>Enter your age in 21-30.</description>
+    <errorConditionFormula>OR(
+   YEAR(TODAY()) - YEAR( Date_of_Birth__c )  &lt; 21,
+   YEAR(TODAY())- YEAR( Date_of_Birth__c )  &gt; 30
+)</errorConditionFormula>
+    <errorMessage>Your age should be in 21-30 range.</errorMessage>
+</ValidationRule>

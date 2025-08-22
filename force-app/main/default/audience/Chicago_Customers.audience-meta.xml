@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Audience xmlns="http://soap.sforce.com/2006/04/metadata">
+    <audienceName>Chicago Customers</audienceName>
+    <container>Ursa Major Customer Account Portal</container>
+    <criteria>
+        <criterion>
+            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <entityField>City</entityField>
+                <entityType>User</entityType>
+                <fieldValue>Chicago</fieldValue>
+            </criterionValue>
+            <operator>Equal</operator>
+            <type>FieldBased</type>
+        </criterion>
+    </criteria>
+    <formulaFilterType>AllCriteriaMatch</formulaFilterType>
+    <isDefaultAudience>false</isDefaultAudience>
+    <targets>
+        <target>
+            <groupName>41292117-c8c7-4944-bc90-5b42d5e94c7b</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>Home_Chicago_Home_Page_Page</targetValue>
+        </target>
+        <target>
+            <groupName>e66ff7f5-d6d1-4d00-a3fd-6c40866aaf8b</groupName>
+            <priority>1</priority>
+            <targetType>ExperienceVariation</targetType>
+            <targetValue>User_Settings_User_Settings_Page</targetValue>
+        </target>
+    </targets>
+</Audience>

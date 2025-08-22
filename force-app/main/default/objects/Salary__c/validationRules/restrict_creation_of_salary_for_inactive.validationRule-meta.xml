@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>restrict_creation_of_salary_for_inactive</fullName>
+    <active>true</active>
+    <description>It restricts the creation of salary record for the inactive employees.</description>
+    <errorConditionFormula>NOT( Credited_To__r.Is_Active__c )</errorConditionFormula>
+    <errorMessage>Salary Cannot be processed for Inactive members.</errorMessage>
+</ValidationRule>

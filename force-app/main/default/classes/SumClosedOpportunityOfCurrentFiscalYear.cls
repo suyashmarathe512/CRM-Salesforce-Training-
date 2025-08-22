@@ -12,4 +12,4 @@ public with sharing class SumClosedOpportunityOfCurrentFiscalYear {
 
 /*
 SumClosedOpportunityOfCurrentFiscalYear obj = new SumClosedOpportunityOfCurrentFiscalYear();
-*/            result += 'Year: ' + year + ' | Total Amount: $' + stats.get(year).format() + ' USD\n';
+*/        

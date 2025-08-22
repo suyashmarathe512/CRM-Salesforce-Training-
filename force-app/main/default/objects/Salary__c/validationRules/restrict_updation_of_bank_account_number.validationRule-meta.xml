@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>restrict_updation_of_bank_account_number</fullName>
+    <active>true</active>
+    <description>Updating of bank account number is restricted.</description>
+    <errorConditionFormula>AND( NOT( ISNEW() ) ,
+ ISCHANGED( Bank_Account_Number__c ) 
+)</errorConditionFormula>
+    <errorMessage>You cannot change the bank account number once it is been set.</errorMessage>
+</ValidationRule>

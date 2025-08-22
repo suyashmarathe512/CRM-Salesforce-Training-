@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Display Model Type --></label>
+    <name>Display_Model_Type__c</name>
+    <picklistValues>
+        <masterLabel>LED</masterLabel>
+        <translation><!-- LED --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>NanoCell</masterLabel>
+        <translation><!-- NanoCell --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>OLED</masterLabel>
+        <translation><!-- OLED --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>QLED</masterLabel>
+        <translation><!-- QLED --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help>
+        <!-- Ensure the unique serial number must be alphanumeric format.
+Mention exact serial number. It is case sensitive. -->
+    </help>
+    <label><!-- Unique Serial Number --></label>
+    <name>Unique_Serial_Number__c</name>
+</CustomFieldTranslation>

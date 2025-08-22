@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Wee_Jet</fullName>
+    <active>true</active>
+    <description>A small Plane</description>
+    <label>Wee Jet</label>
+</RecordType>

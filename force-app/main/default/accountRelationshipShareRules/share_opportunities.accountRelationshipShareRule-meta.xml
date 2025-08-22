@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AccountRelationshipShareRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <accessLevel>Edit</accessLevel>
+    <accountToCriteriaField>Opportunity.AccountId</accountToCriteriaField>
+    <description>Sharing opportunities between accounts.</description>
+    <entityType>Opportunity</entityType>
+    <masterLabel>Share Opportunities</masterLabel>
+    <type>Distributor</type>
+</AccountRelationshipShareRule>

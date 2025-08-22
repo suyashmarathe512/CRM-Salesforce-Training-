@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This is the test queue.</description>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <email>suyashmarathe1092003@gmail.com</email>
+    <name>Case queue</name>
+    <queueMembers>
+        <users>
+            <user>suyashmarathe1092003@cunning-goat-knaz36.com</user>
+            <user>suyashmarathe5127@gmail.com</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+</Queue>

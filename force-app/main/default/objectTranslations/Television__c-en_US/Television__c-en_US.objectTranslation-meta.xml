@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Television</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Televisions</value>
+    </caseValues>
+    <layouts>
+        <layout>Television Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description><!-- Television with Apple brand. --></description>
+        <label><!-- Apple TV --></label>
+        <name>Apple_TV</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Television with Chroma brand. --></description>
+        <label><!-- Chroma TV --></label>
+        <name>Chroma_TV</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Television with LG brand. --></description>
+        <label><!-- LG TV --></label>
+        <name>LG_TV</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Television with samsung brand. --></description>
+        <label><!-- Samsung TV --></label>
+        <name>Samsung_TV</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Television with Sony brand. --></description>
+        <label><!-- Sony TV --></label>
+        <name>Sony_TV</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

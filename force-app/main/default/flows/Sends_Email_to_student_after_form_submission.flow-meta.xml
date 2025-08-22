@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>It sends the email to students who created the new record.</description>
+        <name>Record_creation_email_notification</name>
+        <label>Record creation email notification</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccRecipientAddressList</name>
+            <value>
+                <stringValue>suyashmarathe1092003@gmail.com</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>CurrentUser</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>composeEmailContent</name>
+            <value>
+                <stringValue>True</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Successful submission of student application form.</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <stringValue>&lt;p&gt;{!Email_Body_for_successful_form_submission}&lt;/p&gt;</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <nameSegment>emailSimple</nameSegment>
+        <offset>0</offset>
+        <versionString>1.0.1</versionString>
+    </actionCalls>
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>It sends the email to students of the record creation in student object.</description>
+    <environments>Default</environments>
+    <interviewLabel>Sends Email to student after form submission {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Sends Email to student after form submission</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Record_creation_email_notification</targetReference>
+        </connector>
+        <object>Student__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <description>It is a template where the student will get notify of the form submission with the help of email.</description>
+        <name>Email_Body_for_successful_form_submission</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi {!$Record.First_Name__c} {!$Record.Last_Name__c},&lt;/p&gt;&lt;table class=&quot;ql-table-blob&quot; border=&quot;1&quot; style=&quot;border-collapse: collapse; white-space: pre;&quot;&gt;  &lt;tbody style=&quot;white-space: pre;&quot;&gt;&lt;tr style=&quot;white-space: pre;&quot;&gt;   &lt;th&gt;First Name&lt;/th&gt;   &lt;td&gt;{!$Record.First_Name__c}&lt;/td&gt;  &lt;/tr&gt; &lt;tr style=&quot;white-space: pre;&quot;&gt;   &lt;th&gt;Last Name&lt;/th&gt;   &lt;td&gt;{!$Record.Last_Name__c}&lt;/td&gt;  &lt;/tr&gt; &lt;tr style=&quot;white-space: pre;&quot;&gt;  &lt;th&gt;Email&lt;/th&gt;  &lt;td&gt;{!$Record.Email__c}&lt;/td&gt; &lt;/tr&gt; &lt;tr style=&quot;white-space: pre;&quot;&gt;  &lt;th&gt;Phone&lt;/th&gt;  &lt;td&gt;{!$Record.Phone__c}&lt;/td&gt; &lt;/tr&gt; &lt;tr style=&quot;white-space: pre;&quot;&gt;  &lt;th&gt;State&lt;/th&gt;  &lt;td&gt;{!$Record.State__c}&lt;/td&gt; &lt;/tr&gt; &lt;tr style=&quot;white-space: pre;&quot;&gt;  &lt;th&gt;City&lt;/th&gt;  &lt;td&gt;{!$Record.City__c}&lt;/td&gt; &lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</text>
+    </textTemplates>
+</Flow>

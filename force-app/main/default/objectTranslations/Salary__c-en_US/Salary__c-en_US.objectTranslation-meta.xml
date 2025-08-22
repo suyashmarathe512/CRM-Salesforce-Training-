@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Salary</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Salaries</value>
+    </caseValues>
+    <layouts>
+        <layout>SALARY Layout</layout>
+        <sections>
+            <label><!-- Bank Details --></label>
+            <section>Bank Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Payment Details --></label>
+            <section>Payment Details</section>
+        </sections>
+        <sections>
+            <label><!-- Salary Credited Details --></label>
+            <section>Salary Credited Details</section>
+        </sections>
+        <sections>
+            <label><!-- Salary Deduction Details --></label>
+            <section>Salary Deduction Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Your bank detaila cannot be null. --></errorMessage>
+        <name>bank_details_cannot_be_null</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Salary Cannot be processed for Inactive members. --></errorMessage>
+        <name>restrict_creation_of_salary_for_inactive</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You cannot change the bank account number once it is been set. --></errorMessage>
+        <name>restrict_updation_of_bank_account_number</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Role</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Roles</value>
+    </caseValues>
+    <layouts>
+        <layout>Role Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- This role already has a employee assigned. --></errorMessage>
+        <name>restrict_role_for_adding_second_employee</name>
+    </validationRules>
+</CustomObjectTranslation>

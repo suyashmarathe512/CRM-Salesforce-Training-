@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Model Type --></label>
+    <name>Model_Type__c</name>
+    <picklistValues>
+        <masterLabel>LED</masterLabel>
+        <translation><!-- LED --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Smart</masterLabel>
+        <translation><!-- Smart --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

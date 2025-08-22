@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>Updates_Has_role_field</fullName>
+        <description>This updates the has role field of the employee object.</description>
+        <field>Has_role__c</field>
+        <literalValue>1</literalValue>
+        <name>Updates Has role field</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+        <targetObject>Employee__c</targetObject>
+    </fieldUpdates>
+    <rules>
+        <fullName>Updatest theHas Role field</fullName>
+        <actions>
+            <name>Updates_Has_role_field</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>This workflow checks the field of the employee</description>
+        <formula>NOT(ISBLANK( Employee__c ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

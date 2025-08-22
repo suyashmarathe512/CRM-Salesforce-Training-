@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Category 1 Biking Queue</name>
+    <queueMembers>
+        <users>
+            <user>suyashmarathe1092003@cunning-goat-knaz36.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>Category_1_Biking</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>MessagingSession</sobjectType>
+    </queueSobject>
+</Queue>

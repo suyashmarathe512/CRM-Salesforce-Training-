@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>High_Priority_Energy_Accounts</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>High Priority Energy Accounts</label>
+        <sharedTo>
+            <group>Partner_Managers_and_Channel_Director</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Industry</field>
+            <operation>equals</operation>
+            <value>Energy</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>CustomerPriority__c</field>
+            <operation>equals</operation>
+            <value>High</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

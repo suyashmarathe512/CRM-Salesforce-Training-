@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>restrict_role_for_adding_second_employee</fullName>
+    <active>true</active>
+    <description>It validates if the role has a employee or not, and prevents the role to add another employee.</description>
+    <errorConditionFormula>ISNEW() &amp;&amp;
+Employee__r.Has_role__c = TRUE</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>This role already has a employee assigned.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- unique ID for the bills --></help>
+    <label><!-- Bill Number --></label>
+    <name>Bill_Number__c</name>
+</CustomFieldTranslation>

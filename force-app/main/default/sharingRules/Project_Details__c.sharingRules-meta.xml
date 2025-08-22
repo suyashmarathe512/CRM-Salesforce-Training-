@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Flexpricer_Project_to_certain_Team</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>Grant access to flexpricer team for  only the flexpricer project.</description>
+        <label>Flexpricer Project to certain Team</label>
+        <sharedTo>
+            <group>Flexpricer_Team</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>equals</operation>
+            <value>Flexpricer</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Support_team_access_to_support_projects</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>It grant access to support team to access the support type of projects.</description>
+        <label>Support team access to support projects</label>
+        <sharedTo>
+            <group>Support_Team</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Implementation_Type__c</field>
+            <operation>equals</operation>
+            <value>Support</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>sales_team_access_to_development_projects</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>The sales team have access to projects who has type Product development.</description>
+        <label>sales team access to development projects</label>
+        <sharedTo>
+            <group>Sales_Team</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Implementation_Type__c</field>
+            <operation>equals</operation>
+            <value>Product Development</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

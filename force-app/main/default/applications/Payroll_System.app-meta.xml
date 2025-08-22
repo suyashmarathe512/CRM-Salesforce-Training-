@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <logo>cloudkicks1</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <description>Custom app for managing employee payroll and departments</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Payroll System</label>
+    <navType>Standard</navType>
+    <tabs>Employee__c</tabs>
+    <tabs>Department__c</tabs>
+    <tabs>Client__c</tabs>
+    <tabs>Project_Details__c</tabs>
+    <tabs>ProjectEmployee__c</tabs>
+    <tabs>Role__c</tabs>
+    <tabs>Student__c</tabs>
+    <tabs>Television__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Payroll_System_UtilityBar</utilityBar>
+</CustomApplication>

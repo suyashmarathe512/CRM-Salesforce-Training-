@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QueueRoutingConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <capacityType>INHERITED</capacityType>
+    <capacityWeight>5.0</capacityWeight>
+    <isAttributeBased>false</isAttributeBased>
+    <label>AW computing leads</label>
+    <pushTimeout>20</pushTimeout>
+    <routingModel>MOST_AVAILABLE</routingModel>
+    <routingPriority>1</routingPriority>
+    <userOverflowAssignee>suyashmarathe1092003@cunning-goat-knaz36.com</userOverflowAssignee>
+</QueueRoutingConfig>

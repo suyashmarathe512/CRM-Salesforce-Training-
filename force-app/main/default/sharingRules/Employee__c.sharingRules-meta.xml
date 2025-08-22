@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>access_to_HR_manager_if_employee_is_Active</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>It give access to HR manager role to have access of records of employees.</description>
+        <label>access to HR manager if employee is Active.</label>
+        <sharedTo>
+            <role>HR_Manager</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Current_Employee__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>
