@@ -2,37 +2,13 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>64.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <decisions>
-        <description>It checks how many hours the record was active.</description>
-        <name>Check_record_activity</name>
-        <label>Check record activity</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Older_than_24_hrs</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>recordAge</leftValueReference>
-                <operator>GreaterThan</operator>
-                <rightValue>
-                    <numberValue>1.0</numberValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Status_to_Partially_active</targetReference>
-            </connector>
-            <label>Older than 24 hrs</label>
-        </rules>
-    </decisions>
     <description>It updates the status to partially active if the record last modified time is greater than 24hrs.</description>
     <environments>Default</environments>
     <formulas>
-        <description>It calculates the hours of the last modified date field.</description>
-        <name>recordAge</name>
-        <dataType>Number</dataType>
-        <expression>(NOW()- {!$Record.CreatedDate}) * 24</expression>
-        <scale>0</scale>
+        <description>It gives the yesterday&apos;s date.</description>
+        <name>YesterdayDate</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()-1</expression>
     </formulas>
     <interviewLabel>Update status based on activity {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Update status based on activity</label>
@@ -61,6 +37,14 @@
         <label>Update Status to Partially active.</label>
         <locationX>0</locationX>
         <locationY>0</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CreatedDate</field>
+            <operator>LessThanOrEqualTo</operator>
+            <value>
+                <elementReference>YesterdayDate</elementReference>
+            </value>
+        </filters>
         <inputAssignments>
             <field>Status__c</field>
             <value>
@@ -73,7 +57,7 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_record_activity</targetReference>
+            <targetReference>Update_Status_to_Partially_active</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -87,7 +71,7 @@
         <schedule>
             <frequency>Daily</frequency>
             <startDate>2025-08-18</startDate>
-            <startTime>15:45:00.000Z</startTime>
+            <startTime>15:00:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>

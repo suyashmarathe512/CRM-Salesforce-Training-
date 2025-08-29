@@ -40,6 +40,10 @@
                 <behavior>Edit</behavior>
                 <field>Price</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Line_Item_Id__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

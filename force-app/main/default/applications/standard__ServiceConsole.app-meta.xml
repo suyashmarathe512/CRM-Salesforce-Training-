@@ -193,12 +193,25 @@
     <tabs>Role__c</tabs>
     <tabs>Student__c</tabs>
     <tabs>Television__c</tabs>
+    <tabs>C__c</tabs>
+    <tabs>A__c</tabs>
+    <tabs>B__c</tabs>
+    <tabs>Logs__c</tabs>
     <workspaceConfig>
+        <mappings>
+            <tab>A__c</tab>
+        </mappings>
+        <mappings>
+            <tab>B__c</tab>
+        </mappings>
         <mappings>
             <tab>Bill_Media__c</tab>
         </mappings>
         <mappings>
             <tab>Bill__c</tab>
+        </mappings>
+        <mappings>
+            <tab>C__c</tab>
         </mappings>
         <mappings>
             <tab>Client__c</tab>
@@ -208,6 +221,9 @@
         </mappings>
         <mappings>
             <tab>Employee__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Logs__c</tab>
         </mappings>
         <mappings>
             <tab>Media__c</tab>

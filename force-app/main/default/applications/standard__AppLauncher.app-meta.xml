@@ -19,4 +19,8 @@
     <tabs>Role__c</tabs>
     <tabs>Student__c</tabs>
     <tabs>Television__c</tabs>
+    <tabs>C__c</tabs>
+    <tabs>A__c</tabs>
+    <tabs>B__c</tabs>
+    <tabs>Logs__c</tabs>
 </CustomApplication>

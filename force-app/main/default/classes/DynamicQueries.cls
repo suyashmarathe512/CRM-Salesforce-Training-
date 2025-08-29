@@ -1,5 +1,6 @@
 public with sharing class DynamicQueries {
-    public static List<String> getTextFieldNames(String objectName) {
+    // 1. Fetch all Text field names of an object dynamically
+    public static List<String> GetTextFieldNames(String objectName) {
         List<String> textFields = new List<String>();
         Map<String, Schema.SObjectType> gd = Schema.getGlobalDescribe();
         if (gd.containsKey(objectName)) {
@@ -25,10 +26,12 @@ public with sharing class DynamicQueries {
 DynamicQueries.GetTextFieldNames('Account');
 */
     
-    public static List<SObject> fetchRecords(String objectName) {
-        List<String> fields = getTextFieldNames(objectName);
+    public static List<SObject> FetchRecords(String objectName) {
+        List<String> fields = GetTextFieldNames(objectName);
         String soql = 'SELECT ' + String.join(fields, ',') + ' FROM ' + objectName + ' LIMIT 5';
+        
         return Database.query(soql);
+
     }
     /*
     List<SObject> records = DynamicQueries.FetchRecords('Account');
@@ -41,8 +44,9 @@ DynamicQueries.GetTextFieldNames('Account');
     
 
     
-    public static List<SObject> fetchRecordsWithFilter(String objectName, String filterValue) {
-        List<String> fields = getTextFieldNames(objectName);
+    public static List<SObject> FetchRecordsWithFilter(String objectName, String filterValue) {
+        List<String> fields = GetTextFieldNames(objectName);
+        if (fields.isEmpty()) return new List<SObject>();
         String firstField = fields[0];
         String soql = 'SELECT ' + String.join(fields, ',') + ' FROM ' + objectName +
                       ' WHERE ' + firstField + ' = :filterValue LIMIT 5';
@@ -57,7 +61,7 @@ DynamicQueries.GetTextFieldNames('Account');
     */
 
     
-    public static List<SObject> fetchRecordsAdvanced(
+    public static List<SObject> FetchRecordsAdvanced(
         String objectName,
         String filterValue,
         String orderByField,
@@ -65,7 +69,7 @@ DynamicQueries.GetTextFieldNames('Account');
         Integer limitSize,
         Integer offsetSize
     ) {
-        List<String> fields = getTextFieldNames(objectName);
+        List<String> fields = GetTextFieldNames(objectName);
         String firstField = fields[0];
         String soql = 'SELECT ' + String.join(fields, ',') + ' FROM ' + objectName +
                       ' WHERE ' + firstField + ' = :filterValue' +

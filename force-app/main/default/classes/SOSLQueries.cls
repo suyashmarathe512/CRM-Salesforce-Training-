@@ -19,5 +19,4 @@ public with sharing class SOSLQueries {
 /*
 List<List<SObject>> searchResults = SOSLQueries.findTestInNames();
 
-*/     
-
+*/

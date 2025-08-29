@@ -145,6 +145,8 @@
 		<name>CustomMetadata</name>
 	</types>
 	<types>
+		<members>A__c</members>
+		<members>Account</members>
 		<members>Account</members>
 		<members>AccountBrand</members>
 		<members>AccountCleanInfo</members>
@@ -170,12 +172,14 @@
 		<members>AuthorizationFormConsent</members>
 		<members>AuthorizationFormDataUse</members>
 		<members>AuthorizationFormText</members>
+		<members>B__c</members>
 		<members>BatchJob</members>
 		<members>BatchJobPart</members>
 		<members>BatchJobPartFailedRecord</members>
 		<members>Bill_Media__c</members>
 		<members>Bill__c</members>
 		<members>BusinessBrand</members>
+		<members>C__c</members>
 		<members>Campaign</members>
 		<members>CampaignMember</members>
 		<members>CardPaymentMethod</members>
@@ -260,6 +264,7 @@
 		<members>Location</members>
 		<members>LocationGroup</members>
 		<members>LocationGroupAssignment</members>
+		<members>Logs__c</members>
 		<members>MLModel</members>
 		<members>MLModelFactor</members>
 		<members>MLModelFactorComponent</members>
@@ -298,6 +303,7 @@
 		<members>PaymentLineInvoice</members>
 		<members>PaymentMethod</members>
 		<members>PendingServiceRouting</members>
+		<members>PersonAccount</members>
 		<members>Pricebook2</members>
 		<members>PricebookEntry</members>
 		<members>PrivacyJobSession</members>
