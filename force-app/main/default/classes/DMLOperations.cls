@@ -31,14 +31,15 @@ public with sharing class DMLOperations {
 DMLOperations obj = new DMLOperations();
 DMLOperations.CreateLeadsWithLogging();
 */
-    public static void deleteInactiveRecentAccounts() {
-        DateTime ninetyDaysAgo = System.now().addDays(-90);
+    public static List<Account> deleteInactiveRecentAccounts() {
         List<Account> accountsToDelete = [
             SELECT Id FROM Account
             WHERE Active__c = 'No'
-            AND CreatedDate >= :ninetyDaysAgo
+            AND CreatedDate = LAST_90_DAYS
         ];
+        system.debug('Accounts to delete: ' + accountsToDelete);
         delete accountsToDelete;
+        return accountsToDelete;
         
     }
     /*
@@ -79,7 +80,7 @@ DMLOperations.PrintCampaignsSorted();
         List<Contact> contacts = [
             SELECT Id, FirstName, LastName, LastModifiedDate 
             FROM Contact
-            WHERE LastModifiedDate = TODAY()
+            WHERE LastModifiedDate = TODAY
         ];
         System.debug('Contacts modified today:');
         for (Contact c : contacts) {

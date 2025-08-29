@@ -1,5 +1,4 @@
-trigger AccountTrigger on Account (after insert, after update) {
-    List<Account> clonedAccounts = new List<Account>();
+trigger AccountTrigger on Account (after insert) {
     if (Trigger.isAfter && Trigger.isInsert) {
         AccountTriggerHandler.CloneRecord(Trigger.new);
     }

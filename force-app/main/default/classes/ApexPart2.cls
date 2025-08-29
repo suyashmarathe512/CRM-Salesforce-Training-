@@ -104,26 +104,25 @@ public with sharing class ApexPart2 {
     System.debug(ApexPart2.Divide(10, 2)); 
     System.debug(ApexPart2.Divide(10, 0)); 
     */  
-    public static Map<Date, List<Account>> verifyAccountCreatedOnDate(String dateStr){
-        List<Account> accList = [SELECT Id, Name, CreatedDate FROM Account WHERE DAY_ONLY(CreatedDate)  = :Date.valueOf(dateStr)];
-        Map<Date, List<Account>> accMapByDate = new Map<Date, List<Account>>();
-        system.debug(accList);
+    public static Map<Datetime, List<Account>> verifyAccountCreatedOnDate(){
+        List<Account> accList = [SELECT Id, Name, CreatedDate FROM Account];
+        Map<Datetime, List<Account>> accMapByDate = new Map<Datetime, List<Account>>();
         for(Account acc : accList){
-            if(!accMapByDate.containsKey(Date.valueOf(dateStr))){
-                accMapByDate.put(Date.valueOf(dateStr), new List<Account>());
+            if(!accMapByDate.containsKey(acc.CreatedDate)){
+                accMapByDate.put(acc.CreatedDate, new List<Account>());
             }
-            accMapByDate.get(Date.valueOf(dateStr)).add(acc);
+            accMapByDate.get(acc.CreatedDate).add(acc);
         }
-        for(Date key : accMapByDate.keySet()){
+        for(Datetime key : accMapByDate.keySet()){
             System.debug('Account created on ' + key );
             for(Account acc : accMapByDate.get(key)){
-                System.debug('Account Id: ' + acc.Id + ', Name: ' + acc.Name + ', CreatedDate: ' + acc.CreatedDate);
+                System.debug('Account Id: ' + acc.Id + ', Name: ' + acc.Name);
             }
         }
         return accMapByDate;
     }
     /*
-    ApexPart2.VerifyAccountCreatedOnDate('29/07/2025');
+    ApexPart2.VerifyAccountCreatedOnDate();
     */
     public static List<Account> listOfAccountInJSON(){
         List<Account> accList = [SELECT Id, Name FROM Account LIMIT 5];
@@ -142,16 +141,15 @@ public with sharing class ApexPart2 {
         }
     }
     /*
-    String jsonInput = '[]';
+    String jsonInput = '[{"Id":"001d200000lyNW9AAM","Name":"Edge Communications"}]';
     ApexPart2.jSONToListOfAccount(jsonInput);
     */
     public void dataOfCurrentUser(){
-        User currentUser = [SELECT Id, Name, Email, Profile.Name,Username FROM User WHERE Username = :UserInfo.getUserName()];
-            system.debug('User Id: ' + currentUser.Id);
-            system.debug('User Name: ' + currentUser.Name);
+        User currentUser = [SELECT Id, Username, Email, Profile.Id, UserType FROM User WHERE Username = :UserInfo.getUserName()];
+            system.debug('UserName: ' + currentUser.Username);
             system.debug('User Email: ' + currentUser.Email);
-            system.debug('User Profile Name: ' + currentUser.Profile.Name);
-            system.debug('User Username: ' + currentUser.Username);
+            system.debug('User Profile Id: ' + currentUser.Profile.Id);
+            system.debug('User UserType: ' + currentUser.UserType);
         
     }
     /*
