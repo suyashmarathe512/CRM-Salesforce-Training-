@@ -3,7 +3,6 @@ public with sharing class OpportuntityTriggerHandler {
         for(Opportunity opp: newOpportunities){
             if(opp.StageName == 'Closed Won' && opp.Description == null){
                 opp.addError('Description is required for closed won opportunities');
-                //Rahul
             }
         }
     }
