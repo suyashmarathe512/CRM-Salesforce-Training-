@@ -5,16 +5,16 @@ public with sharing class UserTriggerHandler {
         List<GroupMember> myGroup=new List<GroupMember>();
         List<PermissionSetAssignment> permissionSetList=new List<PermissionSetAssignment>();
         //All the queries to fetch the required data.
-        Id role = [SELECT Id, Name,DeveloperName 
+        Id role = [SELECT Id
                     FROM UserRole 
                     WHERE Name = 'Western Sales Team'].Id;
-        Id myPermissionSet = [SELECT Id, Name, Label 
+        Id myPermissionSet = [SELECT Id
                                 FROM PermissionSet 
                                 WHERE Name = 'Sales_User'].Id;
-        Id salesProfile = [SELECT Name,Id 
+        Id salesProfile = [SELECT Id 
                             FROM Profile 
                             WHERE Name = 'Sales Person'].Id;
-        Id SalesGroup = [SELECT Id, DeveloperName 
+        Id SalesGroup = [SELECT Id
                         FROM Group 
                         WHERE DeveloperName = 'Sales_Team'].Id;
         //Looping through the new users and updating the user role, Profile, Public Group and assigning permission set.
