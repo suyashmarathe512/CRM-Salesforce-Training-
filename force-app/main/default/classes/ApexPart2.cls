@@ -135,13 +135,23 @@ public with sharing class ApexPart2 {
     ApexPart2.listOfAccountInJSON();
     */
     public static void jSONToListOfAccount(String jsonInput){
-        List<Account> accList = (List<Account>) JSON.deserialize(jsonInput, List<Account>.class);
-        for(Account acc : accList){
+        List<SObject> accList = (List<SObject>) JSON.deserialize(jsonInput, List<SObject>.class);
+        for(SObject acc : accList){
             System.debug('Account Id: ' + acc.Id + ', Name: ' + acc.Name);
+        }
+        Database.UpsertResult[] results = Database.upsert(accList, false);
+        for(Database.UpsertResult result : results){
+            if(result.isSuccess()){
+                System.debug('Successfully upserted Account with Id: ' + result.getId());
+            } else {
+                for(Database.Error err : result.getErrors()){
+                    System.debug('Error: ' + err.getMessage());
+                }
+            }
         }
     }
     /*
-    String jsonInput = '[{"Id":"001d200000lyNW9AAM","Name":"Edge Communications"}]';
+    String jsonInput = '[{"Name":"JSON Test 1", "Phone":"123", "Rating": "Hot", "Active__c":"Yes"},{"Name":"JSON Test 2"}]';
     ApexPart2.jSONToListOfAccount(jsonInput);
     */
     public void dataOfCurrentUser(){

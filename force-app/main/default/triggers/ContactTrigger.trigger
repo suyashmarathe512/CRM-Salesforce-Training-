@@ -1,9 +1,12 @@
-trigger ContactsTrigger on Contact (before insert,  before update) {
-    if(Trigger.isBefore && Trigger.isInsert) {
-        CheckForDupicates(Trigger.new);
+trigger ContactTrigger on Contact (before insert,  before update, after insert, after update) {
+    if(Trigger.isBefore) {
+        if(Trigger.isInsert || Trigger.isUpdate) {
+            ContactTriggerHandler.checkDuplicates(Trigger.new);
+        }
     }
-    if(Trigger.isBefore && Trigger.isUpdate) {
-        CheckForDupicates(Trigger.new);
+    if(Trigger.isAfter) {
+        if(Trigger.isInsert || Trigger.isUpdate) {
+            ContactTriggerHandler.associateAccountWithContact(Trigger.new);
+        }
     }
-
 }
