@@ -5,4 +5,9 @@ trigger ContactTrigger on Contact (before insert,  before update, after insert, 
             ContactTriggerHandler.checkDuplicates(Trigger.new);
         }
     }
+    if(Trigger.isAfter) {
+        if(Trigger.isInsert || Trigger.isUpdate) {
+            ContactTriggerHandler.associateAccountWithContact(Trigger.new);
+        }
+    }
 }

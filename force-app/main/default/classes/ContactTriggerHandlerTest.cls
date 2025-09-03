@@ -1,5 +1,6 @@
 @isTest
 public class ContactTriggerHandlerTest {
+    //Update for the review.
     
     @isTest
     static void testDuplicateFound() {
