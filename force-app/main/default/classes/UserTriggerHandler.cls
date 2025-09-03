@@ -1,6 +1,7 @@
 public with sharing class UserTriggerHandler {
 
     public static List<User> salesUserSetup(List<User> newUsers) {
+        //Update for the review.
         //List to stores Group Members and Permission set assignment.
         List<GroupMember> myGroup=new List<GroupMember>();
         List<PermissionSetAssignment> permissionSetList=new List<PermissionSetAssignment>();
