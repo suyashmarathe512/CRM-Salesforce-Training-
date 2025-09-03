@@ -1,4 +1,5 @@
 public class EFTTransactionStatusHandler {
+    //Update for the review.
     public static void createCasesForDeclinedAVS(List<EFT_Transaction_Status__c> newTransactions){
         System.debug('newTransactions'+newTransactions);
         List<Case> caseList = new List<Case>();
