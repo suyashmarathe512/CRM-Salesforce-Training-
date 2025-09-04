@@ -11,9 +11,8 @@ public class EFTTransactionStatusHandler {
         List<EFT_Transaction_Status__c> txnRecord = [SELECT Id, Method_Name__c, Transaction_Status__c, 
                                 SalesHeader__r.Status__c,
                                 SalesHeader__r.Name,
-                                SalesHeader__r.Bill_To_Customer_Account__r.Id, 
-                                SalesHeader__r.Bill_To_Customer_Contact__r.Id,
-                                SalesHeader__r.Bill_To_Customer_Account__r.Name
+                                SalesHeader__r.Bill_To_Customer_Account__r.Id,
+                                SalesHeader__r.Bill_To_Customer_Account__r.Name, SalesHeader__r.Bill_To_Customer_Account__r.PersonContactId
                                         FROM EFT_Transaction_Status__c];
         map<Id, EFT_Transaction_Status__c> txnMap = new map<Id, EFT_Transaction_Status__c>();
         for(EFT_Transaction_Status__c txn : txnRecord){
@@ -24,7 +23,7 @@ public class EFTTransactionStatusHandler {
             if(txn.Method_Name__c == 'Credit Card Address VERIFY' &&
                txn.Transaction_Status__c == 'Declined' && txnMap.get(txn.Id).SalesHeader__r.Status__c == 'Open'){
                 c.AccountId = txnMap.get(txn.Id).SalesHeader__r.Bill_To_Customer_Account__r.Id;
-                c.ContactId = txnMap.get(txn.Id).SalesHeader__r.Bill_To_Customer_Contact__r.Id;
+                c.ContactId = txnMap.get(txn.Id).SalesHeader__r.Bill_To_Customer_Account__r.PersonContactId;
                 c.RecordTypeId = targetRecordTypeId;
                 c.origin = 'Internal';
                 c.Reason = 'Address Did Not Verify';

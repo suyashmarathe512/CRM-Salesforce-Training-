@@ -2,12 +2,16 @@ public with sharing class UserTriggerHandler {
 
     public static List<User> salesUserSetup(List<User> newUsers) {
         //List to stores Group Members and Permission set assignment.
+        Set<Id> userId = new Set<Id>();
+        for(User user: newUsers){
+                userId.add(user.Id);
+        }
         List<GroupMember> myGroup=new List<GroupMember>();
         List<PermissionSetAssignment> permissionSetList=new List<PermissionSetAssignment>();
         //All the queries to fetch the required data.
         Id role = [SELECT Id
                     FROM UserRole 
-                    WHERE Name = 'Western Sales Team'].Id;
+                    WHERE DeveloperName = 'WesternSalesTeam'].Id;
         Id myPermissionSet = [SELECT Id
                                 FROM PermissionSet 
                                 WHERE Name = 'Sales_User'].Id;
@@ -17,6 +21,12 @@ public with sharing class UserTriggerHandler {
         Id SalesGroup = [SELECT Id
                         FROM Group 
                         WHERE DeveloperName = 'Sales_Team'].Id;
+        List<PermissionSetAssignment> psaList = [
+                SELECT Id
+                FROM PermissionSetAssignment 
+                WHERE AssigneeId IN :userId 
+                AND PermissionSetId = :myPermissionSet
+            ];
         //Looping through the new users and updating the user role, Profile, Public Group and assigning permission set.
         for(User user: newUsers){
             String FirstName = user.FirstName;
@@ -25,7 +35,9 @@ public with sharing class UserTriggerHandler {
                     user.UserRoleId = role;
                     user.ProfileId = salesProfile;
                     myGroup.add(new GroupMember(GroupId=SalesGroup, UserOrGroupId=user.Id));
-                    permissionSetList.add(new PermissionSetAssignment(PermissionSetId=myPermissionSet, AssigneeId= user.Id));
+                    if(psaList.isEmpty()){
+                        permissionSetList.add(new PermissionSetAssignment(PermissionSetId=myPermissionSet, AssigneeId= user.Id));
+                    }
                     system.debug('User Role updated for ' + user.Name + 
                     ' to ' + user.UserRole.DeveloperName 
                     + 'with Profile: ' + user.Profile.Name);                    
