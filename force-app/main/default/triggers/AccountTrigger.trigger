@@ -1,5 +1,9 @@
 trigger AccountTrigger on Account (after insert) {
     if (Trigger.isAfter && Trigger.isInsert) {
-        AccountTriggerHandler.cloneRecord(Trigger.new);
+        //AccountTriggerHandler.cloneRecord(Trigger.new);
     }
+    if(Trigger.isBefore && Trigger.isUpdate) {
+        AccountTriggerHandler.(Trigger.new);
+    }
+
 }

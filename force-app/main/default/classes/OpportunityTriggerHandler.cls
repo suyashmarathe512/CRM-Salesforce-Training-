@@ -16,10 +16,10 @@ public with sharing class OpportunityTriggerHandler {
         }
         if(!oppIdsToUpdate.isEmpty()) {
             try{
-                    List<OpportunityLineItem> oppolineItems = [
-                        SELECT Id, UnitPrice, OpportunityId 
+                List<OpportunityLineItem> oppolineItems = [
+                        SELECT Id, UnitPrice, OpportunityId, Quantity 
                         FROM OpportunityLineItem
-                        WHERE OpportunityId IN :oppIdsToUpdate
+                        WHERE OpportunityId IN :oppIdsToUpdate AND Quantity >= 2
                     ];
                 Map<Id, Decimal> oppDiscountMap = new Map<Id, Decimal>();
                 for(Opportunity opp : newOpps) {
@@ -29,11 +29,12 @@ public with sharing class OpportunityTriggerHandler {
                 }
                 for(OpportunityLineItem oli: oppolineItems) {
                     Decimal discount = oppDiscountMap.get(oli.OpportunityId);
-                    if(discount != null && discount > 0 && discount < 100){
+                    if(discount != null && discount > 0 && discount < 100 
+                        && oli.Quantity >= 2){
                         oli.UnitPrice = oli.UnitPrice * (1 - discount / 100);
                     }
                     else{
-                        oli.addError('Line Item Discount must be between 0 and 100');
+                        oli.addError('');
                     }
                 }
                 Database.UpsertResult[] results = Database.upsert(oppolineItems, false);

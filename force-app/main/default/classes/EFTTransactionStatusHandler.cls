@@ -29,7 +29,7 @@ public class EFTTransactionStatusHandler {
                 c.Reason = 'Address Did Not Verify';
                 c.Status = 'New';
                 c.Priority = 'High';
-                c.Type = 'AVS Declined';
+                c.Type = 'Address Did Not Verify';
                 c.Subject = txnMap.get(txn.Id).SalesHeader__r.Bill_To_Customer_Account__r.Name + ' ' + c.Type;
                 c.OwnerId = queueId;
                 c.Open_Sales_Order__c  = txnMap.get(txn.Id).SalesHeader__r.Id;
