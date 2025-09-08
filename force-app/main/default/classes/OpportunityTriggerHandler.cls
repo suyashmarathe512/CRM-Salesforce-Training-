@@ -15,43 +15,45 @@ public with sharing class OpportunityTriggerHandler {
             }
         }
         if(!oppIdsToUpdate.isEmpty()) {
-            try{
-                List<OpportunityLineItem> oppolineItems = [
-                        SELECT Id, UnitPrice, OpportunityId, Quantity 
-                        FROM OpportunityLineItem
-                        WHERE OpportunityId IN :oppIdsToUpdate AND Quantity >= 2
-                    ];
+             try {
+                List<OpportunityLineItem> oliList = [
+                SELECT Id, UnitPrice, OpportunityId, Quantity
+                FROM OpportunityLineItem
+                WHERE OpportunityId IN :oppIdsToUpdate AND Quantity >= 2];
                 Map<Id, Decimal> oppDiscountMap = new Map<Id, Decimal>();
-                for(Opportunity opp : newOpps) {
-                    if(oppIdsToUpdate.contains(opp.Id)) {
+                for (Opportunity opp : newOpps) {
+                    if (oppIdsToUpdate.contains(opp.Id)) {
                         oppDiscountMap.put(opp.Id, opp.Line_Item_Discount__c);
                     }
                 }
-                for(OpportunityLineItem oli: oppolineItems) {
+                for (OpportunityLineItem oli : oliList) {
                     Decimal discount = oppDiscountMap.get(oli.OpportunityId);
-                    if(discount != null && discount > 0 && discount < 100 
-                        && oli.Quantity >= 2){
+                    if (discount != null && discount > 0 && discount < 100 && oli.Quantity >= 2) {
                         oli.UnitPrice = oli.UnitPrice * (1 - discount / 100);
-                    }
-                    else{
-                        oli.addError('');
+                    } else {
+                            Logs__c l = new Logs__c();
+                            l.Error__c = 'No valid discount for OLI Id: ' + oli.Id + ' (discount=' + String.valueOf(discount) + ')';
+                            errorLogs.add(l);
+                        }
+                }
+                Database.SaveResult[] oliResults = Database.update(oliList, false);
+                for (Integer i = 0; i < oliResults.size(); i++) {
+                    if (!oliResults[i].isSuccess()) {
+                        for (Database.Error err : oliResults[i].getErrors()) {
+                            Logs__c l = new Logs__c();
+                            l.Error__c = 'OpportunityLineItem Id: ' + oliList[i].Id + '. Reason: ' + err.getMessage();
+                            errorLogs.add(l);
+                        }
                     }
                 }
-                Database.UpsertResult[] results = Database.upsert(oppolineItems, false);
-                for (Integer i = 0; i < results.size(); i++) {
-                    if(!results[i].isSuccess()){
-                            for(Database.Error err : results[i].getErrors()){
-                                Logs__c log = new Logs__c();
-                                log.Error__c = 'Opportunity Line Item Id: ' + oppolineItems[i].Id + '. Reason: ' + err.getMessage();
-                                errorlogs.add(log);
-                            }
-                    }
+                if (!errorLogs.isEmpty()) {
+                    Database.SaveResult[] logResults = Database.insert(errorLogs);
                 }
-            }
-            catch(Exception e) {
-                System.debug('Error: ' + e.getMessage());
+            }   
+            catch (Exception e) {
+                System.debug('updateOpportunityProductsWithDiscount Exception: ' + e.getMessage());
             }
         }
     }
-}
 
+}
