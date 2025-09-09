@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This event takes the JSON data as well as the object name. This data is inserted into the ord.</description>
+    <eventType>HighVolume</eventType>
+    <label>JSON To Object Record</label>
+    <pluralLabel>JSON To Object Records</pluralLabel>
+    <publishBehavior>PublishImmediately</publishBehavior>
+</CustomObject>
