@@ -7,17 +7,20 @@ public with sharing class AsyncApexPart1 {
             LastName = lastName,
             FirstName = firstName,
             Alias = alias,
-            CommunityNickname = communityNickname,
             ProfileId = profileId
         );
         insert newUser;
+
+        System.debug('New User Created: ' + newUser);
     }
+    
     public static void solveMixDMLError() {
         Id profileId = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1].Id;
         insertUserAsync('testuser@example.com', 'testuser@example.com', 'Test', 'User', 'tuser', 'testuser', profileId);
 
         Account newAccount = new Account(Name = 'Test Account');
         insert newAccount;
+        system.debug('New Account Created' + newAccount);
     }
 
     // 2) Future method to update Account Description
@@ -32,3 +35,17 @@ public with sharing class AsyncApexPart1 {
         update accountsToUpdate;
     }
 }
+
+/*
+AsyncApexPart1.insertUserAsync(
+    'newuser@example.com', 
+    'newuser@example.com', 
+    'UserLastName', 
+    'UserFirstName', 
+    'nuser',
+    [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1].Id
+);
+AsyncApexPart1.solveMixDMLError();
+
+AsyncApexPart1.updateAccountDescriptionsAsync();
+*/
